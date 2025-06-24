@@ -42,8 +42,9 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
 
 const fetchEmployees = async (): Promise<Employee[]> =>
   fetchWithAuth(`${backend_url}/api/employees`);
-const allEmployees =  await fetchWithAuth("http://localhost:3000/api/employees");
-const id = allEmployees.pop();
+ 
+ 
+
 
 const fetchDepartments = async (): Promise<Department[]> =>
   fetchWithAuth(`${backend_url}/api/departments`);
@@ -117,7 +118,7 @@ export default function EmployeePage() {
       header: "Actions",
       cell: ({ row }) => {
         const emp = row.original;
-        return id!=2? <div></div> : (
+        return  (
           <div className="flex gap-2">
             <Button className="bg-pink-600" variant="outline" onClick={() => setViewed(emp)}>View</Button>
             <Button  className="bg-blue-500" variant="outline" onClick={() => setSelected(emp)}>Edit</Button>
