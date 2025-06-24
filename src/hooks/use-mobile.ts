@@ -1,7 +1,7 @@
 
-const useMobile = () => {
+const useIsMobile = () => {
     return window.innerWidth < 768;
   };
   
-  export default useMobile;
+  export default useIsMobile;
   
