@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import EmployeeView from "./EmployeeView";
+const backend_url = "https://erp-system-erp-backend.onrender.com";
 
 type Employee = {
   id: number;
@@ -40,25 +41,27 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
 };
 
 const fetchEmployees = async (): Promise<Employee[]> =>
-  fetchWithAuth("http://localhost:3000/api/employees");
+  fetchWithAuth(`${backend_url}/api/employees`);
+const allEmployees =  await fetchWithAuth("http://localhost:3000/api/employees");
+const id = allEmployees.pop();
 
 const fetchDepartments = async (): Promise<Department[]> =>
-  fetchWithAuth("http://localhost:3000/api/departments");
+  fetchWithAuth(`${backend_url}/api/departments`);
 
 const addEmployee = async (employee: Employee) =>
-  fetchWithAuth("http://localhost:3000/api/employees", {
+  fetchWithAuth(`${backend_url}/api/employees`, {
     method: "POST",
     body: JSON.stringify(employee),
   });
 
 const updateEmployee = async (employee: Employee) =>
-  fetchWithAuth(`http://localhost:3000/api/employees/${employee.id}`, {
+  fetchWithAuth(`${backend_url}/api/employees/${employee.id}`, {
     method: "PUT",
     body: JSON.stringify(employee),
   });
 
 const deleteEmployee = async (id: number) =>
-  fetchWithAuth(`http://localhost:3000/api/employees/${id}`, {
+  fetchWithAuth(`${backend_url}/api/employees/${id}`, {
     method: "DELETE",
   });
 
@@ -114,7 +117,7 @@ export default function EmployeePage() {
       header: "Actions",
       cell: ({ row }) => {
         const emp = row.original;
-        return (
+        return id!=2? <div></div> : (
           <div className="flex gap-2">
             <Button className="bg-pink-600" variant="outline" onClick={() => setViewed(emp)}>View</Button>
             <Button  className="bg-blue-500" variant="outline" onClick={() => setSelected(emp)}>Edit</Button>

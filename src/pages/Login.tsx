@@ -46,7 +46,7 @@ export default function Login() {
 
 
   return (
-    <div className="min-w-screen min-h-screen  bg-blue-300 flex justify-baseline flex-col items-center gap-9 ">
+    <div className="min-w-screen min-h-screen  bg-green-950 flex justify-baseline flex-col items-center gap-9 ">
        <div></div><h1>Welcome to The ERP</h1>
         <Card className="w-full max-w-sm">
         <CardHeader>
@@ -55,7 +55,7 @@ export default function Login() {
             Enter your email below to login to your account
           </CardDescription>
           <CardAction>
-            <Button variant="link" className='bg-blue-800' 
+            <Button variant="link" className='bg-gray-400 text-black' 
               onClick={() =>{ navigate({ to: "/register" })
               }}>Sign Up</Button>
           </CardAction>
@@ -85,7 +85,7 @@ export default function Login() {
           </form>
         </CardContent>
         <CardFooter className="flex-col gap-2 ">
-          <Button type="submit" className="w-full bg-blue-900" onClick={handleLogin}>
+          <Button type="submit" className="w-full bg-blue-500" onClick={handleLogin}>
           {mutation.isPending ? "Logging in..." : "Login"}
           </Button>
         </CardFooter>

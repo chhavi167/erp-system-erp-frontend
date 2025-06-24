@@ -4,10 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { useEffect } from "react";
 
-
+const backend_url = "https://erp-system-erp-backend.onrender.com";
 const fetchSummary = async () => {
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:3000/api/summary", {
+  const res = await fetch(`${backend_url}/api/summary`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

@@ -1,6 +1,6 @@
 
 
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = "https://erp-system-erp-backend.onrender.com/api/auth";
 
 // Register new user
 export const registerUser = async (userData: {
